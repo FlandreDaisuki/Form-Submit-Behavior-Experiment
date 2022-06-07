@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Race demo</title>
+</head>
+<body>
+  <script>
+    const DELAY_IN_MS = 0;
+
+    function f3() {
+      const formEl = document.getElementById('form');
+      const inputEl = document.getElementById('input');
+      if(true){
+        inputEl.value = 'こんにちは'
+        formEl.submit();
+      }
+    }
+    function f2() {
+      const formEl = document.getElementById('form');
+      const inputEl = document.getElementById('input');
+      if(true){
+        inputEl.value = '你好'
+        formEl.submit();
+      }
+      setTimeout(f3, DELAY_IN_MS);
+    }
+    function submitForm() {
+      const formEl = document.getElementById('form');
+      const inputEl = document.getElementById('input');
+
+      formEl.submit();
+
+      if(true){
+        inputEl.value = 'Hello'
+        formEl.submit();
+      }
+      setTimeout(f2, 0);
+    }
+  </script>
+  <form id="form" action="/race" method="POST">
+    <input id="ua" type="hidden" name="ua" value="Hi">
+    <script>ua.value = navigator.userAgent</script>
+
+    <input id="input" type="text" name="greetings" value="Hi">
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+</body>
+</html>
